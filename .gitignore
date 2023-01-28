@@ -39,6 +39,6 @@ pip-wheel-metadata
 /poetry.toml
 
 poetry/core/*
-Footer
-© 2023 GitHub, Inc.
-Footer navigat
+
+# Project specific
+sources.yaml
