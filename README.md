@@ -10,8 +10,6 @@
 pip install wikicite
 ```
 
-Once installation is complete, copy `sources_default.yaml` to `sources.yaml`. This is where you can configure your own sources and cite types. News and web types are already created in the default file, along with some example, commonly used sources.
-
 ## Usage
 
 Command line tool to create ready-to-use Wikipedia citations from a series of inputs.

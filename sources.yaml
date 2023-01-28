@@ -1,5 +1,9 @@
 ---
 news:
+  bbc:
+    name: "BBC"
+    location: ""
+    abbr: "BBC"
   g:
     name: "The Guardian"
     location: "London"
@@ -12,6 +16,10 @@ news:
     name: "The Daily Mirror"
     location: "London"
     abbr: "Mirror"
+  rp:
+    name: "Racing Post"
+    location: "London"
+    abbr: "RP"
   t:
     name: "The Daily Telegraph"
     location: "London"
@@ -19,5 +27,5 @@ news:
 web:
   bbc:
     name: "BBC"
-    location: "London"
+    location: ""
     abbr: "BBC"
