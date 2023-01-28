@@ -5,7 +5,7 @@ import wikicite.markdown as md
 
 TODAY = date.today().strftime('%d %B %Y')
 
-with open('sources.yaml', 'r') as file:
+with open('wikicite/sources.yaml', 'r') as file:
     sources = yaml.safe_load(file)
 
 
