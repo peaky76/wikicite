@@ -28,3 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Ensure `sources.yaml` is packaged
+
+## [0.1.3] - 2023-01-28
+
+### Fixed
+
+- Correct referencing of `sources.yaml`
