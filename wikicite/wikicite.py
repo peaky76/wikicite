@@ -1,11 +1,13 @@
+from datetime import date, datetime
+import os
 import click
 import yaml
-from datetime import date, datetime
 import wikicite.markdown as md
 
 TODAY = date.today().strftime('%d %B %Y')
 
-with open('./sources.yaml', 'r') as file:
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+with open(os.path.join(__location__, './sources.yaml'), 'r') as file:
     sources = yaml.safe_load(file)
 
 

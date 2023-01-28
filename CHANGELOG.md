@@ -34,3 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Correct referencing of `sources.yaml`
+
+## [0.1.4] - 2023-01-28
+
+### Fixed
+
+- `os` based referencing of `sources.yaml`
