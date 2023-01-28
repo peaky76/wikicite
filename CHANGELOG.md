@@ -22,3 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Replace `sources_default.yaml` with `sources.yaml` for correct referencing when installed. This removes the intended way of configuring sources. Configuration will be reinstated in later releases.
+
+## [0.1.2] - 2023-01-28
+
+### Fixed
+
+- Ensure `sources.yaml` is packaged
