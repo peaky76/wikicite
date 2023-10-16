@@ -1,0 +1,34 @@
+[news.bbc]
+name = "BBC"
+location = ""
+abbr = "BBC"
+
+[news.g]
+name = "The Guardian"
+location = "London"
+abbr = "Guardian"
+
+[news.i]
+name = "The Independent"
+location = "London"
+abbr = "Indy"
+
+[news.m]
+name = "The Daily Mirror"
+location = "London"
+abbr = "Mirror"
+
+[news.rp]
+name = "Racing Post"
+location = "London"
+abbr = "RP"
+
+[news.t]
+name = "The Daily Telegraph"
+location = "London"
+abbr = "Telegraph"
+
+[web.bbc]
+name = "BBC"
+location = ""
+abbr = "BBC"
