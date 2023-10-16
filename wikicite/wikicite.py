@@ -4,7 +4,7 @@ import click
 import tomllib
 import wikicite.markdown as md
 
-CITE_TYPES = ("news", "web")
+CITE_TYPES = ("book", "news", "web")
 TODAY = date.today().strftime("%d %B %Y")
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -33,11 +33,14 @@ with open(os.path.join(__location__, "./sources.toml"), "rb") as file:
 @click.option(
     "-t", "--title", type=str, prompt=True, default="", help="title of article"
 )
+@click.option("-p", "--publisher", type=str, prompt=True, help="publisher")
+@click.option("-l", "--location", type=str, prompt=True, help="location of publisher")
 @click.option("-d", "--date", type=str, prompt=True, help="date of publication")
 @click.option(
     "-url", type=str, prompt=True, default="", help="url where the source can be found"
 )
-def cite(cite_type, source, author, title, date, url):
+@click.option("-isbn", type=str, prompt=True, default="", help="isbn of book")
+def cite(cite_type, source, author, title, publisher, location, date, url, isbn):
     source = sources[source] if source else None
 
     raw_date = datetime.strptime(str(date), "%d%m%Y") or None
@@ -56,8 +59,10 @@ def cite(cite_type, source, author, title, date, url):
         "first": author[0],
         "title": title,
         "work": md.link(source["name"]) if source else "",
-        "location": source["location"] if source else "",
+        "location": source["location"] if source else location,
+        "publisher": publisher,
         "url": url,
+        "isbn": isbn,
         "date": article_date.strip(),
         "access-date": TODAY,
     }
