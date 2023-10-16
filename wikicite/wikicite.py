@@ -38,23 +38,30 @@ with open(os.path.join(__location__, "./sources.toml"), "rb") as file:
     "-url", type=str, prompt=True, default="", help="url where the source can be found"
 )
 def cite(cite_type, source, author, title, date, url):
-    source = sources[source]
+    source = sources[source] if source else None
 
     raw_date = datetime.strptime(str(date), "%d%m%Y") or None
     article_date = raw_date.strftime("%e %B %Y") or ""
     ymd_date = raw_date.strftime("%y%m%d") or ""
-    ref_name = f"{author[1]}{ymd_date}" if author[1] else f"{source['abbr']}{ymd_date}"
+    ref_name = (
+        f"{author[1]}{ymd_date}"
+        if author[1]
+        else f"{source['abbr']}{ymd_date}"
+        if source
+        else f"{title[:6]}{ymd_date}"
+    )
 
     attributes = {
         "last": author[1],
         "first": author[0],
         "title": title,
-        "work": md.link(source["name"]),
-        "location": source["location"],
+        "work": md.link(source["name"]) if source else "",
+        "location": source["location"] if source else "",
         "url": url,
         "date": article_date.strip(),
         "access-date": TODAY,
     }
+    attributes = {key: val for key, val in attributes.items() if val}
 
     click.echo(f"<ref name={ref_name}>")
     click.echo(
