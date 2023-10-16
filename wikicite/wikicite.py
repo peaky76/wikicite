@@ -2,6 +2,7 @@ from datetime import date, datetime
 import os
 import click
 import tomllib
+from wikicite.create_citation import create_citation
 import wikicite.markdown as md
 
 CITE_TYPES = ("book", "news", "web")
@@ -178,18 +179,8 @@ def book(title, author, publisher, location, date, isbn):
         "isbn": isbn,
         "date": date.strip(),
     }
-    attributes = {key: val for key, val in attributes.items() if val}
 
-    click.echo(f"<ref name={ref_name}>")
-    click.echo(
-        md.template(
-            " |".join(
-                [f"cite book"]
-                + [f"{key}={val}" for key, val in attributes.items() if val]
-            )
-        )
-    )
-    click.echo("</ref>")
+    create_citation(ref_name, "book", attributes)
 
 
 @cite.command()
@@ -240,18 +231,8 @@ def news(source, author, title, date, url):
         "date": article_date.strip(),
         "access-date": TODAY,
     }
-    attributes = {key: val for key, val in attributes.items() if val}
 
-    click.echo(f"<ref name={ref_name}>")
-    click.echo(
-        md.template(
-            " |".join(
-                [f"cite news"]
-                + [f"{key}={val}" for key, val in attributes.items() if val]
-            )
-        )
-    )
-    click.echo("</ref>")
+    create_citation(ref_name, "news", attributes)
 
 
 @cite.command()
@@ -302,15 +283,4 @@ def web(source, author, title, date, url):
         "date": article_date.strip(),
         "access-date": TODAY,
     }
-    attributes = {key: val for key, val in attributes.items() if val}
-
-    click.echo(f"<ref name={ref_name}>")
-    click.echo(
-        md.template(
-            " |".join(
-                [f"cite web"]
-                + [f"{key}={val}" for key, val in attributes.items() if val]
-            )
-        )
-    )
-    click.echo("</ref>")
+    create_citation(ref_name, "web", attributes)
