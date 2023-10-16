@@ -8,6 +8,7 @@ def test_basic_full_citation():
         cite,
         [
             "news",
+            "-s",
             "g",
             "-t",
             "An Important Article",

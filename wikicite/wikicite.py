@@ -14,7 +14,13 @@ with open(os.path.join(__location__, "./sources.toml"), "rb") as file:
 
 @click.command()
 @click.argument("cite_type", type=click.Choice(CITE_TYPES, case_sensitive=False))
-@click.argument("source_id", type=str)
+@click.option(
+    "-s",
+    "--source",
+    type=click.Choice(sources.keys()),
+    default=None,
+    help="use one of the pre-configured common sources",
+)
 @click.option(
     "-a",
     "--author",
@@ -31,8 +37,8 @@ with open(os.path.join(__location__, "./sources.toml"), "rb") as file:
 @click.option(
     "-url", type=str, prompt=True, default="", help="url where the source can be found"
 )
-def cite(cite_type, source_id, author, title, date, url):
-    source = sources[source_id]
+def cite(cite_type, source, author, title, date, url):
+    source = sources[source]
 
     raw_date = datetime.strptime(str(date), "%d%m%Y") or None
     article_date = raw_date.strftime("%e %B %Y") or ""
