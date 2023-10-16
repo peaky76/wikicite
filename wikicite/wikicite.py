@@ -46,23 +46,7 @@ def book(title, author, publisher, location, date, isbn):
 @common_options
 @url_option
 def news(source, author, title, date, url):
-    source = sources[source] if source else None
-    raw_date = datetime.strptime(str(date), "%d%m%Y") or None
-    article_date = raw_date.strftime("%e %B %Y") or ""
-    ymd_date = raw_date.strftime("%y%m%d") or ""
-    ref_name = get_reference_name(author, ymd_date, title, source)
-
-    attributes = {
-        "last": author[1],
-        "first": author[0],
-        "title": title,
-        "work": md.link(source["name"]) if source else "",
-        "location": source["location"] if source else "",
-        "url": url,
-        "date": article_date.strip(),
-        "access-date": TODAY,
-    }
-
+    ref_name, attributes = prep_news_or_web(source, author, title, date, url)
     create_citation(ref_name, "news", attributes)
 
 
@@ -71,6 +55,11 @@ def news(source, author, title, date, url):
 @common_options
 @url_option
 def web(source, author, title, date, url):
+    ref_name, attributes = prep_news_or_web(source, author, title, date, url)
+    create_citation(ref_name, "web", attributes)
+
+
+def prep_news_or_web(source, author, title, date, url):
     source = sources[source] if source else None
     raw_date = datetime.strptime(str(date), "%d%m%Y") or None
     article_date = raw_date.strftime("%e %B %Y") or ""
@@ -87,4 +76,5 @@ def web(source, author, title, date, url):
         "date": article_date.strip(),
         "access-date": TODAY,
     }
-    create_citation(ref_name, "web", attributes)
+
+    return ref_name, attributes
