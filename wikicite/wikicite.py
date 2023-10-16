@@ -3,6 +3,7 @@ import os
 import click
 import tomllib
 from wikicite.create_citation import create_citation
+from wikicite.get_reference_name import get_reference_name
 import wikicite.markdown as md
 from wikicite.options import common_options, source_option, url_option
 
@@ -25,11 +26,7 @@ def cite():
 @click.option("-l", "--location", type=str, prompt=True, help="location of publisher")
 @click.option("-isbn", type=str, prompt=True, default="", help="isbn of book")
 def book(title, author, publisher, location, date, isbn):
-    ref_name = (
-        f"{author[1]}{date}"
-        if author[1]
-        else f"{title[:6].replace(' ','').title()}{date}"
-    )
+    ref_name = get_reference_name(author, date, title)
 
     attributes = {
         "last": author[1],
@@ -50,17 +47,10 @@ def book(title, author, publisher, location, date, isbn):
 @url_option
 def news(source, author, title, date, url):
     source = sources[source] if source else None
-
     raw_date = datetime.strptime(str(date), "%d%m%Y") or None
     article_date = raw_date.strftime("%e %B %Y") or ""
     ymd_date = raw_date.strftime("%y%m%d") or ""
-    ref_name = (
-        f"{author[1]}{ymd_date}"
-        if author[1]
-        else f"{source['abbr']}{ymd_date}"
-        if source
-        else f"{title[:6].replace(' ','').title()}{ymd_date}"
-    )
+    ref_name = get_reference_name(author, ymd_date, title, source)
 
     attributes = {
         "last": author[1],
@@ -82,17 +72,10 @@ def news(source, author, title, date, url):
 @url_option
 def web(source, author, title, date, url):
     source = sources[source] if source else None
-
     raw_date = datetime.strptime(str(date), "%d%m%Y") or None
     article_date = raw_date.strftime("%e %B %Y") or ""
     ymd_date = raw_date.strftime("%y%m%d") or ""
-    ref_name = (
-        f"{author[1]}{ymd_date}"
-        if author[1]
-        else f"{source['abbr']}{ymd_date}"
-        if source
-        else f"{title[:6].replace(' ','').title()}{ymd_date}"
-    )
+    ref_name = get_reference_name(author, ymd_date, title, source)
 
     attributes = {
         "last": author[1],
