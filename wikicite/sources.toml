@@ -1,34 +1,29 @@
-[news.bbc]
+[bbc]
 name = "BBC"
 location = ""
 abbr = "BBC"
 
-[news.g]
+[g]
 name = "The Guardian"
 location = "London"
 abbr = "Guardian"
 
-[news.i]
+[i]
 name = "The Independent"
 location = "London"
 abbr = "Indy"
 
-[news.m]
+[m]
 name = "The Daily Mirror"
 location = "London"
 abbr = "Mirror"
 
-[news.rp]
+[rp]
 name = "Racing Post"
 location = "London"
 abbr = "RP"
 
-[news.t]
+[t]
 name = "The Daily Telegraph"
 location = "London"
 abbr = "Telegraph"
-
-[web.bbc]
-name = "BBC"
-location = ""
-abbr = "BBC"
