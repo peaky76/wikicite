@@ -1,0 +1,51 @@
+[asc]
+page = "Ascot Racecourse"
+alias = "Ascot"
+
+[ayr]
+page = "Ayr Racecourse"
+alias = "Ayr"
+
+[don]
+page = "Doncaster Racecourse"
+alias = "Doncaster"
+
+[eps]
+page = "Epsom Downs Racecourse"
+alias = "Epsom"
+
+[ham]
+page = "Hamilton Park Racecourse"
+alias = "Hamilton"
+
+[lin]
+page = "Lingfield Park Racecourse"
+alias = "Lingfield"
+
+[not]
+page = "Nottingham Racecourse"
+alias = "Nottingham"
+
+[red]
+page = "Redcar Racecourse"
+alias = "Redcar"
+
+[sou]
+page = "Southwell Racecourse"
+alias = "Southwell"
+
+[thi]
+page = "Thirsk Racecourse"
+alias = "Thirsk"
+
+[wol]
+page = "Wolverhampton Racecourse"
+alias = "Wolverhampton"
+
+[mo]
+page = "Sheikh Mohammed bin Rashid Al Maktoum"
+alias = "Sheikh Mohammed"
+
+[qe2]
+page = "Queen Elizabeth II"
+alias = "The Queen"

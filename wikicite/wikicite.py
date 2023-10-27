@@ -2,6 +2,7 @@ from datetime import date, datetime
 import os
 import click
 import tomllib
+
 from wikicite.create_citation import create_citation
 from wikicite.get_reference_name import get_reference_name
 import wikicite.markdown as md
@@ -14,10 +15,38 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 with open(os.path.join(__location__, "./sources.toml"), "rb") as file:
     sources = tomllib.load(file)
 
+with open(os.path.join(__location__, "./links.toml"), "rb") as file:
+    links = tomllib.load(file)
+
 
 @click.group()
 def cite():
     pass
+
+
+@cite.command()
+@click.argument("page", type=str)
+@click.option("-a", "--alias", type=str, default="", help="alias for page")
+def link(page, alias):
+    click.echo(md.link(page, alias or None))
+
+
+@cite.command()
+@click.argument(
+    "abbr",
+    type=click.Choice(links.keys()),
+)
+def ql(abbr):
+    click.echo(md.link(links[abbr]["page"], links[abbr]["alias"]))
+
+
+@cite.command()
+@click.argument(
+    "abbr",
+    type=click.Choice(links.keys()),
+)
+def quicklink(abbr):
+    click.echo(md.link(links[abbr]["page"], links[abbr]["alias"]))
 
 
 @cite.command()
