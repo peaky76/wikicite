@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wikicite"
-version = "0.2.0"
+version = "0.3.0"
 description = "Create ready-to-use Wikipedia citations from a series of inputs"
 authors = ["peaky76 <robertjamespeacock@gmail.com>"]
 readme = "README.md"

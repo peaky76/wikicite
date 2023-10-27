@@ -2,6 +2,13 @@ from click.testing import CliRunner
 from wikicite.wikicite import cite, TODAY
 
 
+def test_wikicite_link():
+    runner = CliRunner()
+    result = runner.invoke(cite, ["link", "Test"])
+    assert result.exit_code == 0
+    assert "[[Test]]" in result.output
+
+
 def test_basic_full_citation():
     runner = CliRunner()
     result = runner.invoke(
@@ -32,4 +39,5 @@ def test_basic_full_citation():
 
 def runner():
     test_basic_full_citation()
-    print("1 test passed successfully")
+    test_wikicite_link()
+    print("2 tests passed successfully")
